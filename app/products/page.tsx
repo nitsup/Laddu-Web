@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ProductCard } from "@/components/product-card";
+import { ProductCatalogue } from "@/components/product-catalogue";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { pageMetadata } from "@/lib/metadata";
-import { products } from "@/lib/products";
+import { bulkDiscounts, products } from "@/lib/products";
 
 export const metadata: Metadata = pageMetadata({
   title: "Products",
@@ -20,12 +20,15 @@ export default function ProductsPage() {
           <p>View product listings and contact us to confirm details, ingredients, and availability.</p>
         </div>
       </section>
-      <section className="page-content shell" aria-live="polite" aria-labelledby="catalog-heading">
+      <section className="page-content shell" aria-labelledby="catalog-heading">
         <h2 className="sr-only" id="catalog-heading">Current product listings</h2>
         {products.length ? (
-          <div className="product-grid">
-            {products.map((product) => <ProductCard key={product.slug} product={product} />)}
-          </div>
+          <>
+            <p className="bulk-discount-note">
+              Bulk orders: save ₹{bulkDiscounts[0].amount} on 2 kg or ₹{bulkDiscounts[1].amount} on 3 kg.
+            </p>
+            <ProductCatalogue products={products} />
+          </>
         ) : (
           <div className="empty-state">
             <div>

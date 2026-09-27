@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/products";
+import { ProductPricing } from "@/components/product-pricing";
 
 export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
@@ -13,7 +14,8 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
         <div className="product-card-copy">
           <h3>{product.name}</h3>
-          <p>{product.description}</p>
+          <p>{product.summary}</p>
+          <ProductPricing sizes={product.sizes} />
           <span className="text-link">View details <span aria-hidden="true">→</span></span>
         </div>
       </Link>

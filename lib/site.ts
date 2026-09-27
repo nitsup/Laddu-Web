@@ -13,9 +13,11 @@ function normalizeSiteUrl(value: string | undefined): string | undefined {
 export const site = {
   name: "T-NUTRIST",
   ceo: "Ayush Verma",
+  founder: "Mr. Ayush Verma",
+  vision: "Bring the authentic taste of ladoo to Indian households and revive the traditional dadi/Nani-style ladoo experience.",
   websiteCreator: { name: "Akshat Sharma", phone: "9643861602" },
   description: "Explore the T-NUTRIST laddu catalogue and contact us with product enquiries.",
-  businessDescription: "T-NUTRIST is an online business with a catalogue of laddu products.",
+  businessDescription: "T-NUTRIST was established under the guidance of Mr. Ayush Verma, CEO and founder. The company aims to provide nutrient-rich ladoos to Gen Z while reconnecting people with the traditional Indian taste of ladoo.",
   url: normalizeSiteUrl(configuredHost),
   contact: {
     whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim() || "918076519197",

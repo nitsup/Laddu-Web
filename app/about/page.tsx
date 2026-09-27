@@ -25,22 +25,22 @@ export default function AboutPage() {
       </section>
       <section className="section shell image-band">
         <div className="image-band-visual">
-          <Image src={imageUrl} alt="Atta and dry fruit laddu with a coarse texture and visible nut pieces" width={768} height={1367} loading="lazy" sizes="(max-width: 680px) 100vw, 40vw" />
+          <Image src={imageUrl} alt="Besan Dry Fruit Laddu product photo" width={768} height={1367} loading="lazy" sizes="(max-width: 680px) 100vw, 40vw" />
         </div>
         <div className="image-band-copy">
           <p className="eyebrow">The business</p>
           <h2>The {site.name} catalogue.</h2>
-          <p>{site.name} is an online business led by {site.ceo}, its CEO. This catalogue presents the current laddu range for customers to explore.</p>
+          <p>{site.businessDescription} This catalogue presents the current laddu range for customers to explore.</p>
           <p>Contact us to confirm product details, availability, and delivery options before ordering.</p>
         </div>
       </section>
       <section className="section section-soft">
         <div className="shell">
-          <div className="section-heading"><p className="eyebrow">The catalogue</p><h2>Explore the range.</h2></div>
+          <div className="section-heading"><p className="eyebrow">Our story</p><h2>Traditional taste for a new generation.</h2></div>
           <div className="value-grid">
-            <article className="value-item"><span className="value-number">01</span><h3>Product listings</h3><p>Browse the current laddu range.</p></article>
-            <article className="value-item"><span className="value-number">02</span><h3>Product enquiries</h3><p>Contact us with questions about the listings.</p></article>
-            <article className="value-item"><span className="value-number">03</span><h3>Ordering information</h3><p>Ask about delivery and ordering before purchasing.</p></article>
+            <article className="value-item"><span className="value-number">01</span><h3>Our aim</h3><p>Provide nutrient-rich ladoos to Gen Z while reconnecting people with the traditional Indian taste of ladoo.</p></article>
+            <article className="value-item"><span className="value-number">02</span><h3>Founder</h3><p>{site.founder}, CEO and founder of T-NUTRIST.</p></article>
+            <article className="value-item"><span className="value-number">03</span><h3>Our vision</h3><p>{site.vision}</p></article>
           </div>
         </div>
       </section>

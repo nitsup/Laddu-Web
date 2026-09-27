@@ -4,9 +4,10 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { ProductCard } from "@/components/product-card";
 import { ProductGallery } from "@/components/product-gallery";
+import { ProductPricing } from "@/components/product-pricing";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { pageMetadata } from "@/lib/metadata";
-import { getProduct, products } from "@/lib/products";
+import { bulkDiscounts, getProduct, products } from "@/lib/products";
 import { absoluteUrl, site } from "@/lib/site";
 
 type ProductPageProps = { params: Promise<{ slug: string }> };
@@ -39,20 +40,16 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    description: product.description,
+    description: product.description.join(" "),
     ...(site.url ? { url: absoluteUrl(`/products/${product.slug}`) } : {}),
     ...(site.url && product.images.length ? { image: product.images.map(({ src }) => absoluteUrl(src)) } : {}),
-    ...(product.specifications.length ? {
-      additionalProperty: product.specifications.map(({ name, value }) => ({ "@type": "PropertyValue", name, value })),
-    } : {}),
-    ...(product.price ? {
-      offers: {
+    offers: product.sizes.map(({ label, price }) => ({
         "@type": "Offer",
-        price: product.price.amount,
-        priceCurrency: product.price.currency,
-        url: absoluteUrl(`/products/${product.slug}`),
-      },
-    } : {}),
+        price,
+        priceCurrency: "INR",
+        description: label,
+        ...(site.url ? { url: absoluteUrl(`/products/${product.slug}`) } : {}),
+      })),
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -78,12 +75,13 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           <div className="product-detail-copy">
             <p className="eyebrow">Product details</p>
             <h1>{product.name}</h1>
-            <p>{product.description}</p>
-            {product.specifications.length > 0 && (
-              <dl className="spec-list">
-                {product.specifications.map((item) => <div key={item.name}><dt>{item.name}</dt><dd>{item.value}</dd></div>)}
-              </dl>
-            )}
+            <div className="product-description">
+              {product.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <ProductPricing sizes={product.sizes} />
+            <p className="bulk-discount-note">
+              Bulk orders: save ₹{bulkDiscounts[0].amount} on 2 kg or ₹{bulkDiscounts[1].amount} on 3 kg.
+            </p>
             <WhatsappCta productName={product.name} label={`Ask about ${product.name}`} />
           </div>
         </div>
