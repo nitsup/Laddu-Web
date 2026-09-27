@@ -5,7 +5,6 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Page not found",
   description: `The page you requested could not be found in the ${site.name} catalogue.`,
-  robots: { index: false, follow: true },
   openGraph: {
     type: "website",
     title: `Page not found | ${site.name}`,

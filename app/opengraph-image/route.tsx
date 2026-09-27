@@ -1,11 +1,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
 
-export const alt = `${site.name} product and business information`;
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
-
-export default function OpenGraphImage() {
+export async function GET() {
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 72, background: "#e9ecdf", color: "#183b32" }}>
@@ -20,6 +16,6 @@ export default function OpenGraphImage() {
         <div style={{ width: 72, height: 8, background: "#d95b43" }} />
       </div>
     ),
-    size,
+    { width: 1200, height: 630 },
   );
 }

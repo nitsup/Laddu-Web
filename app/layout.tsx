@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     description: site.description,
     ...(site.url ? { images: ["/opengraph-image"] } : {}),
   },
-  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
