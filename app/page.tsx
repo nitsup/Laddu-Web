@@ -23,6 +23,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-art">
+            <p className="service-area-note">Services are currently available only in Delhi.</p>
             <div className="hero-image-frame">
               {heroImage ? (
                 <Image src={heroImage.src} alt={heroImage.alt} width={768} height={1367} preload sizes="(max-width: 680px) 70vw, 35vw" />

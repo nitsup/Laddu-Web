@@ -1,13 +1,21 @@
 const configuredHost =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
   process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() ||
-  process.env.VERCEL_URL?.trim() ||
   (process.env.NODE_ENV === "development" ? "http://localhost:3000" : undefined);
 
 function normalizeSiteUrl(value: string | undefined): string | undefined {
   if (!value) return undefined;
-  const withProtocol = value.startsWith("http") ? value : `https://${value}`;
-  return withProtocol.replace(/\/$/, "");
+  const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+
+  try {
+    const url = new URL(withProtocol);
+    const isLocalDevelopment = process.env.NODE_ENV === "development" && url.hostname === "localhost";
+    if (url.protocol !== "https:" && !isLocalDevelopment) return undefined;
+    if (url.username || url.password || url.search || url.hash) return undefined;
+    return url.origin;
+  } catch {
+    return undefined;
+  }
 }
 
 export const site = {
