@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/lib/products";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  if (!site.url) return [];
+
   const staticRoutes = ["/", "/products", "/about", "/contact", "/faq"];
   const productRoutes = products.map(({ slug }) => `/products/${slug}`);
 

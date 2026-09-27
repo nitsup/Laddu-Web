@@ -1,4 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: `The page you requested could not be found in the ${site.name} catalogue.`,
+  robots: { index: false, follow: true },
+  openGraph: {
+    type: "website",
+    title: `Page not found | ${site.name}`,
+    description: `The page you requested could not be found in the ${site.name} catalogue.`,
+  },
+  twitter: {
+    card: "summary",
+    title: `Page not found | ${site.name}`,
+    description: `The page you requested could not be found in the ${site.name} catalogue.`,
+  },
+};
 
 export default function NotFound() {
   return (

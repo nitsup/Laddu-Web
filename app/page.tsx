@@ -5,8 +5,8 @@ import { WhatsappCta } from "@/components/whatsapp-cta";
 import { products } from "@/lib/products";
 import { site } from "@/lib/site";
 
-const imageUrl = "/images/laddu-editorial.webp";
-const imageCredit = "https://commons.wikimedia.org/wiki/File:Laddu_Sweet.JPG";
+const heroImage = products[0]?.images[0];
+const brandImage = products[3]?.images[0];
 
 export default function HomePage() {
   return (
@@ -14,9 +14,9 @@ export default function HomePage() {
       <section className="hero">
         <div className="shell hero-grid">
           <div className="hero-copy reveal">
-            <p className="eyebrow">A closer look at {site.name}</p>
-            <h1>Get to know what&apos;s on the table.</h1>
-            <p>Explore the product range, learn about the business, and find the details you need before getting in touch.</p>
+            <p className="eyebrow">Online laddu catalogue</p>
+            <h1>Explore the {site.name} laddu range.</h1>
+            <p>{site.businessDescription} Browse the listings and contact us about product details or availability.</p>
             <div className="hero-actions">
               <Link className="button-link" href="/products">Explore products <span aria-hidden="true">→</span></Link>
               <WhatsappCta label="Ask us a question" className="text-link" />
@@ -24,10 +24,11 @@ export default function HomePage() {
           </div>
           <div className="hero-art">
             <div className="hero-image-frame">
-              <Image src={imageUrl} alt="Illustrative photograph of laddu sweets; this is not a T-NUTRIST product image." width={1280} height={853} priority sizes="(max-width: 680px) 90vw, 48vw" />
+              {heroImage ? (
+                <Image src={heroImage.src} alt={heroImage.alt} width={768} height={1367} preload sizes="(max-width: 680px) 70vw, 35vw" />
+              ) : <span className="hero-image-fallback">Product photo unavailable</span>}
             </div>
-            <span className="hero-note">Made for<br />the moment</span>
-            <p className="image-credit hero-credit">Illustrative image · <a href={imageCredit} target="_blank" rel="noopener noreferrer">Nandhinikandhasamy / CC BY-SA 4.0</a></p>
+            <span className="hero-note">A closer look<br />at the range</span>
           </div>
         </div>
       </section>
@@ -35,11 +36,11 @@ export default function HomePage() {
       <section className="section shell">
         <div className="intro-grid reveal">
           <div>
-            <p className="eyebrow">Welcome</p>
-            <h2>A little more about what we do.</h2>
+            <p className="eyebrow">About {site.name}</p>
+            <h2>A simple way to explore our range.</h2>
           </div>
           <div className="intro-copy">
-            <p>{site.name} brings product information and business details together in one easy place. Browse what&apos;s available, get to know the business, and ask us about the things that matter to you.</p>
+            <p>Browse the current product listings, learn about the business, or contact us with a question.</p>
             <Link className="text-link" href="/about">Meet {site.name} <span aria-hidden="true">→</span></Link>
           </div>
         </div>
@@ -48,19 +49,19 @@ export default function HomePage() {
       <section className="section section-soft">
         <div className="shell">
           <div className="section-heading reveal">
-            <p className="eyebrow">The collection</p>
-            <h2>Find your next favourite.</h2>
-            <p>Explore the current range and open any item for its full details.</p>
+            <p className="eyebrow">The catalogue</p>
+            <h2>Browse the current range.</h2>
+            <p>Open a listing for product details and contact options.</p>
           </div>
           {products.length ? (
             <div className="product-grid">
-              {products.slice(0, 3).map((product) => <ProductCard key={product.slug} product={product} />)}
+              {products.slice(0, 4).map((product) => <ProductCard key={product.slug} product={product} />)}
             </div>
           ) : (
             <div className="empty-state">
               <div>
-                <h3>Products are being added.</h3>
-                <p>Check back soon for the full range and product-specific information.</p>
+                <h3>No products are listed right now.</h3>
+                <p>Contact us to ask about the current range.</p>
                 <Link className="text-link" href="/products">Visit the product catalogue <span aria-hidden="true">→</span></Link>
               </div>
             </div>
@@ -70,27 +71,28 @@ export default function HomePage() {
 
       <section className="section shell">
         <div className="section-heading reveal">
-          <p className="eyebrow">What matters</p>
-          <h2>Good information makes choosing easier.</h2>
+          <p className="eyebrow">Product information</p>
+          <h2>Find the details you need.</h2>
         </div>
         <div className="value-grid">
-          <article className="value-item reveal"><span className="value-number">01</span><h3>Clear details</h3><p>Product information gathered in one place, so it&apos;s easy to compare and explore.</p></article>
-          <article className="value-item reveal"><span className="value-number">02</span><h3>Direct answers</h3><p>A simple way to ask questions about products, availability, and delivery.</p></article>
-          <article className="value-item reveal"><span className="value-number">03</span><h3>Know before you order</h3><p>Confirm the details that matter to you before you decide what&apos;s right.</p></article>
+          <article className="value-item reveal"><span className="value-number">01</span><h3>Product range</h3><p>Browse the current laddu listings.</p></article>
+          <article className="value-item reveal"><span className="value-number">02</span><h3>Product questions</h3><p>Contact us to ask about ingredients and availability.</p></article>
+          <article className="value-item reveal"><span className="value-number">03</span><h3>Ordering details</h3><p>Ask about delivery and ordering before you decide.</p></article>
         </div>
       </section>
 
       <section className="section section-soft">
         <div className="shell image-band">
           <div className="image-band-visual">
-            <Image src={imageUrl} alt="Illustrative view of Indian laddu sweets; not a photograph of a T-NUTRIST product." width={1280} height={853} loading="lazy" sizes="(max-width: 680px) 100vw, 50vw" />
+            {brandImage ? (
+              <Image src={brandImage.src} alt={brandImage.alt} width={768} height={1367} loading="lazy" sizes="(max-width: 680px) 100vw, 40vw" />
+            ) : <span className="hero-image-fallback">Product photo unavailable</span>}
           </div>
           <div className="image-band-copy reveal">
-            <p className="eyebrow">A little context</p>
-            <h2>Made to be explored at your own pace.</h2>
-            <p>Take a look around, read the available product information, or get in touch if you&apos;d like to know more about the range.</p>
+            <p className="eyebrow">Explore T-NUTRIST</p>
+            <h2>Product details, all in one place.</h2>
+            <p>Browse the catalogue or contact us to ask about product details, availability, and ordering.</p>
             <Link className="text-link" href="/faq">Read about ordering and delivery <span aria-hidden="true">→</span></Link>
-            <p className="image-credit" style={{ marginTop: 18 }}>Illustrative photo by <a href={imageCredit} target="_blank" rel="noopener noreferrer">Nandhinikandhasamy</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
           </div>
         </div>
       </section>

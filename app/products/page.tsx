@@ -6,7 +6,7 @@ import { products } from "@/lib/products";
 
 export const metadata: Metadata = pageMetadata({
   title: "Products",
-  description: "Browse the T-NUTRIST product range, read product details, and enquire about availability.",
+  description: "Browse the T-NUTRIST laddu catalogue and contact us to confirm product details, ingredients, and availability.",
   path: "/products",
 });
 
@@ -15,12 +15,13 @@ export default function ProductsPage() {
     <>
       <section className="page-hero">
         <div className="shell">
-          <p className="eyebrow">The collection</p>
-          <h1>Products to explore.</h1>
-          <p>Browse the current range and open a product for its description, images, and confirmed details.</p>
+          <p className="eyebrow">The catalogue</p>
+          <h1>Browse the laddu range.</h1>
+          <p>View product listings and contact us to confirm details, ingredients, and availability.</p>
         </div>
       </section>
-      <section className="page-content shell" aria-live="polite">
+      <section className="page-content shell" aria-live="polite" aria-labelledby="catalog-heading">
+        <h2 className="sr-only" id="catalog-heading">Current product listings</h2>
         {products.length ? (
           <div className="product-grid">
             {products.map((product) => <ProductCard key={product.slug} product={product} />)}
@@ -28,8 +29,8 @@ export default function ProductsPage() {
         ) : (
           <div className="empty-state">
             <div>
-              <h2>The product catalogue is being prepared.</h2>
-              <p>There are no product listings yet. Get in touch to ask about current availability.</p>
+              <h2>No products are listed right now.</h2>
+              <p>Contact us to ask about the current range.</p>
               <WhatsappCta label="Ask about availability" />
             </div>
           </div>

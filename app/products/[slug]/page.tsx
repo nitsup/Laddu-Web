@@ -40,9 +40,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    brand: { "@type": "Brand", name: site.name },
-    url: absoluteUrl(`/products/${product.slug}`),
-    ...(product.images.length ? { image: product.images.map(({ src }) => absoluteUrl(src)) } : {}),
+    ...(site.url ? { url: absoluteUrl(`/products/${product.slug}`) } : {}),
+    ...(site.url && product.images.length ? { image: product.images.map(({ src }) => absoluteUrl(src)) } : {}),
     ...(product.specifications.length ? {
       additionalProperty: product.specifications.map(({ name, value }) => ({ "@type": "PropertyValue", name, value })),
     } : {}),
@@ -69,7 +68,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   return (
     <>
       <JsonLd data={productSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      {site.url && <JsonLd data={breadcrumbSchema} />}
       <section className="page-content shell">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link> / <Link href="/products">Products</Link> / <span aria-current="page">{product.name}</span>

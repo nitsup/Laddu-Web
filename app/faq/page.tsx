@@ -5,19 +5,19 @@ import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "FAQ & delivery",
-  description: `Find ordering, delivery, coverage, and returns information for ${site.name}.`,
+  title: "Ordering & delivery",
+  description: `Read about ordering, delivery, and returns for the ${site.name} catalogue. Contact us to confirm current terms.`,
   path: "/faq",
 });
 
 const questions = [
   {
     question: "How do I place an order?",
-    answer: "This site is a product catalogue and does not accept orders or payments. Contact us to confirm availability and agree on the next steps before purchasing.",
+    answer: "This website is a product catalogue and does not process orders or payments. Contact us to confirm availability and discuss ordering.",
   },
   {
     question: "Where do you deliver?",
-    answer: "Delivery areas have not been confirmed for this site. Ask us to check your location before relying on delivery.",
+    answer: "Contact us to ask whether delivery is available for your location before purchasing.",
   },
   {
     question: "How long does delivery take, and what does it cost?",
@@ -25,7 +25,7 @@ const questions = [
   },
   {
     question: "What is the return or exchange policy?",
-    answer: "Return and exchange terms have not been provided here. Please ask about the applicable terms before completing a purchase.",
+    answer: "Please contact us to ask about the return or exchange terms that apply to your purchase.",
   },
 ];
 
@@ -45,9 +45,9 @@ export default function FaqPage() {
       <JsonLd data={faqSchema} />
       <section className="page-hero">
         <div className="shell">
-          <p className="eyebrow">Helpful details</p>
-          <h1>Ordering & delivery.</h1>
-          <p>Information about ordering, delivery coverage, timing, and returns. Please confirm current terms directly before you purchase.</p>
+          <p className="eyebrow">Frequently asked questions</p>
+          <h1>Ordering and delivery.</h1>
+          <p>Find answers about the catalogue, ordering, and delivery. Contact us to confirm current terms before purchasing.</p>
         </div>
       </section>
       <section className="page-content shell">

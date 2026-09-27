@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
 type PageMetadataInput = {
   title: string;
@@ -9,13 +9,26 @@ type PageMetadataInput = {
 };
 
 export function pageMetadata({ title, description, path, images = ["/opengraph-image"] }: PageMetadataInput): Metadata {
-  const socialImages = images.map((image) => ({ url: image.startsWith("http") ? image : absoluteUrl(image) }));
+  const socialImages = site.url ? images.map((image) => ({
+    url: image.startsWith("http") ? image : absoluteUrl(image),
+    alt: title,
+  })) : undefined;
 
   return {
     title,
     description,
-    alternates: { canonical: path },
-    openGraph: { type: "website", title, description, url: path, images: socialImages },
-    twitter: { card: "summary_large_image", title, description, images: socialImages.map(({ url }) => url) },
+    ...(site.url ? { alternates: { canonical: path } } : {}),
+    openGraph: {
+      type: "website",
+      title,
+      description,
+      ...(site.url ? { url: path, images: socialImages } : {}),
+    },
+    twitter: {
+      card: site.url ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(socialImages ? { images: socialImages } : {}),
+    },
   };
 }

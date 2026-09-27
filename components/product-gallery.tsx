@@ -6,18 +6,16 @@ import type { ProductImage } from "@/lib/products";
 
 export function ProductGallery({ images, productName }: { images: ProductImage[]; productName: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const touchStartX = useRef(0);
   const image = images[activeIndex];
 
   if (!image) {
-    return <div className="gallery-stage"><div className="gallery-fallback">Product images will be added soon.</div></div>;
+    return <div className="gallery-stage"><div className="gallery-fallback">Product photo unavailable</div></div>;
   }
 
   const move = (offset: number) => {
     setActiveIndex((index) => (index + offset + images.length) % images.length);
-    setLoaded(false);
     setFailed(false);
   };
 
@@ -32,21 +30,19 @@ export function ProductGallery({ images, productName }: { images: ProductImage[]
         }}
       >
         {failed ? (
-          <div className="gallery-fallback" role="img" aria-label={`Image unavailable: ${image.alt}`}>Image unavailable</div>
+          <div className="gallery-fallback" role="img" aria-label={`Product photo unavailable: ${image.alt}`}>Product photo unavailable</div>
         ) : (
           <Image
             key={image.src}
             src={image.src}
             alt={image.alt}
-            width={1200}
-            height={900}
-            sizes="(max-width: 680px) 100vw, 55vw"
-            onLoad={() => setLoaded(true)}
+            width={768}
+            height={1367}
+            sizes="(max-width: 680px) 100vw, 50vw"
+            preload={activeIndex === 0}
             onError={() => setFailed(true)}
-            style={{ opacity: loaded ? 1 : 0, transition: "opacity .2s ease" }}
           />
         )}
-        {!loaded && !failed && <span className="gallery-fallback" aria-hidden="true">Loading image…</span>}
       </div>
       {images.length > 1 && (
         <div className="gallery-controls">

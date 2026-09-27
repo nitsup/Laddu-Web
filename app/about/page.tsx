@@ -7,45 +7,44 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "About",
-  description: `Learn about ${site.name}, its products, and the information available to customers.`,
+  description: `Learn about ${site.name}, an online business led by CEO ${site.ceo}.`,
   path: "/about",
 });
 
-const imageUrl = "/images/laddu-editorial.webp";
+const imageUrl = "/images/products/atta-dry-fruit-laddu.png";
 
 export default function AboutPage() {
   return (
     <>
       <section className="page-hero">
         <div className="shell">
-          <p className="eyebrow">Our story</p>
-          <h1>A little about {site.name}.</h1>
-          <p>A place to learn about the business, explore its products, and find useful information before you get in touch.</p>
+          <p className="eyebrow">About the business</p>
+          <h1>About {site.name}.</h1>
+          <p>{site.businessDescription} Explore the catalogue and contact us with questions.</p>
         </div>
       </section>
       <section className="section shell image-band">
         <div className="image-band-visual">
-          <Image src={imageUrl} alt="Illustrative photograph of laddu sweets; this is not a T-NUTRIST product image." width={1280} height={853} loading="lazy" sizes="(max-width: 680px) 100vw, 50vw" />
+          <Image src={imageUrl} alt="Atta and dry fruit laddu with a coarse texture and visible nut pieces" width={768} height={1367} loading="lazy" sizes="(max-width: 680px) 100vw, 40vw" />
         </div>
         <div className="image-band-copy">
           <p className="eyebrow">The business</p>
-          <h2>Made clearer, one detail at a time.</h2>
-          <p>{site.name} brings the business introduction, product information, and ordering guidance together. As confirmed details are added, this is where you&apos;ll be able to get a clearer picture of what&apos;s available and how to enquire.</p>
-          <p>For now, please get in touch to confirm product availability, delivery coverage, and any other details important to your order.</p>
-          <p className="image-credit">Illustrative photo by <a href="https://commons.wikimedia.org/wiki/File:Laddu_Sweet.JPG" target="_blank" rel="noopener noreferrer">Nandhinikandhasamy</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+          <h2>The {site.name} catalogue.</h2>
+          <p>{site.name} is an online business led by {site.ceo}, its CEO. This catalogue presents the current laddu range for customers to explore.</p>
+          <p>Contact us to confirm product details, availability, and delivery options before ordering.</p>
         </div>
       </section>
       <section className="section section-soft">
         <div className="shell">
-          <div className="section-heading"><p className="eyebrow">Our approach</p><h2>Useful information, easy to find.</h2></div>
+          <div className="section-heading"><p className="eyebrow">The catalogue</p><h2>Explore the range.</h2></div>
           <div className="value-grid">
-            <article className="value-item"><span className="value-number">01</span><h3>Clear descriptions</h3><p>Product pages are designed for the information customers need to make an informed choice.</p></article>
-            <article className="value-item"><span className="value-number">02</span><h3>Open conversation</h3><p>Questions about a product or an order deserve a direct answer.</p></article>
-            <article className="value-item"><span className="value-number">03</span><h3>Details before decisions</h3><p>Delivery and ordering information should be clear before you commit.</p></article>
+            <article className="value-item"><span className="value-number">01</span><h3>Product listings</h3><p>Browse the current laddu range.</p></article>
+            <article className="value-item"><span className="value-number">02</span><h3>Product enquiries</h3><p>Contact us with questions about the listings.</p></article>
+            <article className="value-item"><span className="value-number">03</span><h3>Ordering information</h3><p>Ask about delivery and ordering before purchasing.</p></article>
           </div>
         </div>
       </section>
-      <section className="cta-band"><div className="shell cta-band-inner"><h2>Curious about the products?</h2><WhatsappCta label="Make an enquiry" className="button-link button-link--light" /></div></section>
+      <section className="cta-band"><div className="shell cta-band-inner"><h2>Questions about the range?</h2><WhatsappCta label={`Message ${site.ceo} on WhatsApp`} className="button-link button-link--light" /></div></section>
       <div className="shell" style={{ paddingBlock: 12 }}><Link className="text-link" href="/products">Browse the products <span aria-hidden="true">→</span></Link></div>
     </>
   );

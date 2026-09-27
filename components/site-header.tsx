@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { site } from "@/lib/site";
@@ -14,7 +15,9 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label={`${site.name} home`}>
-          <span className="brand-mark" aria-hidden="true">TN</span>
+          <span className="brand-mark" aria-hidden="true">
+            <Image src="/images/t-nutrist-logo.webp" alt="" fill sizes="38px" />
+          </span>
           <span className="brand-name">{site.name}</span>
         </Link>
         <nav className="primary-nav" aria-label="Main navigation">
@@ -22,12 +25,13 @@ export function SiteHeader() {
         </nav>
         <WhatsappCta label="Make an enquiry" className="button-link header-cta" />
         <details className="mobile-menu">
-          <summary aria-label="Open navigation">
+          <summary>
             <span className="menu-icon" aria-hidden="true"><span /><span /><span /></span>
             Menu
           </summary>
           <nav className="mobile-nav" aria-label="Mobile navigation">
             {links.map((link) => <Link key={link.href} href={link.href} prefetch={false}>{link.label}</Link>)}
+            <WhatsappCta label="Message on WhatsApp" className="mobile-whatsapp-link" />
           </nav>
         </details>
       </div>
