@@ -17,37 +17,37 @@ export type Product = {
 export const products: Product[] = [
   {
     slug: "kale-til-laddu",
-    name: "Black Sesame Seed Traditional Ladoo",
+    name: "Black Sesame Seed Ladoo",
     summary: "Black sesame and pumpkin seed laddu.",
     description: [
       "Made with nutrient-dense black sesame seeds, pumpkin seeds, and pure desi ghee, with zero added sugar.",
       "Packed with Zinc and Omega-3, they strengthen hair, relieve stress, and improve sleep quality.",
       "Enjoy this natural wellness boost in both winter and summer.",
     ],
-    images: [{ src: "/images/products/kale-til-laddu.png", alt: "Black Sesame Seed Traditional Ladoo product photo" }],
+    images: [{ src: "/images/products/kale-til-laddu.png", alt: "Black Sesame Seed Ladoo product photo" }],
     sizes: [
       { label: "500 g", grams: 500, price: 299 },
       { label: "1 kg", grams: 1000, price: 599 },
     ],
-    seoTitle: "Black Sesame Seed Traditional Ladoo",
-    seoDescription: "Explore Black Sesame Seed Traditional Ladoo made with black sesame seeds, pumpkin seeds, and desi ghee. Available in 500 g and 1 kg sizes.",
+    seoTitle: "Black Sesame Seed Ladoo",
+    seoDescription: "Explore Black Sesame Seed Ladoo made with black sesame seeds, pumpkin seeds, and desi ghee. Available in 500 g and 1 kg sizes.",
   },
   {
     slug: "safed-til-laddu",
-    name: "White Sesame Seed Traditional Ladoo",
+    name: "White Sesame Seed Ladoo",
     summary: "White sesame and pumpkin seed laddu.",
     description: [
-      "Crafted with white sesame, pumpkin seeds, and pure desi ghee, with zero added sugar.",
+      "Crafted with white sesame, traditional love , and pure desi ghee, with zero added sugar.",
       "Loaded with plant-based protein, iron, and zinc, they support muscle building, fight stress, and fulfill daily nutrients.",
       "Perfect to nourish your body in both winter and summer.",
     ],
-    images: [{ src: "/images/products/Safed-til-laddu.png", alt: "White Sesame Seed Traditional Ladoo product photo" }],
+    images: [{ src: "/images/products/Safed-til-laddu.png", alt: "White Sesame Seed Ladoo product photo" }],
     sizes: [
       { label: "500 g", grams: 500, price: 299 },
       { label: "1 kg", grams: 1000, price: 599 },
     ],
-    seoTitle: "White Sesame Seed Traditional Ladoo",
-    seoDescription: "Explore White Sesame Seed Traditional Ladoo made with white sesame, pumpkin seeds, and desi ghee. Available in 500 g and 1 kg sizes.",
+    seoTitle: "White Sesame Seed Ladoo",
+    seoDescription: "Explore White Sesame Seed Ladoo made with white sesame, pumpkin seeds, and desi ghee. Available in 500 g and 1 kg sizes.",
   },
   {
     slug: "besan-dry-fruit-laddu",
