@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/json-ld";
 import { ProductCard } from "@/components/product-card";
 import { ProductGallery } from "@/components/product-gallery";
 import { ProductPricing } from "@/components/product-pricing";
+import { ProductSearch } from "@/components/product-search";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { pageMetadata } from "@/lib/metadata";
 import { bulkDiscounts, getProduct, products } from "@/lib/products";
@@ -70,6 +71,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link> / <Link href="/products">Products</Link> / <span aria-current="page">{product.name}</span>
         </nav>
+        <ProductSearch id="detail-product-search" />
         <div className="product-detail-grid">
           <ProductGallery images={product.images} productName={product.name} />
           <div className="product-detail-copy">

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
+import { ProductSearch } from "@/components/product-search";
 import { WhatsappCta } from "@/components/whatsapp-cta";
 import { products } from "@/lib/products";
 import { site } from "@/lib/site";
@@ -54,6 +55,7 @@ export default function HomePage() {
             <h2>Browse the current range.</h2>
             <p>Open a listing for product details and contact options.</p>
           </div>
+          <ProductSearch id="homepage-product-search" />
           {products.length ? (
             <div className="product-grid">
               {products.slice(0, 4).map((product) => <ProductCard key={product.slug} product={product} />)}

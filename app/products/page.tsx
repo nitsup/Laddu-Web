@@ -10,7 +10,14 @@ export const metadata: Metadata = pageMetadata({
   path: "/products",
 });
 
-export default function ProductsPage() {
+type ProductsPageProps = {
+  searchParams: Promise<{ q?: string | string[] }>;
+};
+
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const params = await searchParams;
+  const query = Array.isArray(params.q) ? params.q[0] : params.q;
+
   return (
     <>
       <section className="page-hero">
@@ -27,7 +34,7 @@ export default function ProductsPage() {
             <p className="bulk-discount-note">
               Bulk orders: save ₹{bulkDiscounts[0].amount} on 2 kg or ₹{bulkDiscounts[1].amount} on 3 kg.
             </p>
-            <ProductCatalogue products={products} />
+            <ProductCatalogue key={query ?? ""} products={products} initialQuery={query ?? ""} />
           </>
         ) : (
           <div className="empty-state">
